@@ -79,7 +79,7 @@ Maintain iterative design history
 
 -   Node.js
 -   Express
--   OpenAI API
+-   OpenRouter API - Llama Instruct
 -   CORS Configuration
 -   Environment-based setup
 
