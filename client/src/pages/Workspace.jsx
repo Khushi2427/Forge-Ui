@@ -78,10 +78,14 @@ export default function Workspace() {
     const selected = versions[index];
     if (!selected) return;
   
+    // Restore selected version
     setPlan(selected.plan);
     setCode(selected.code);
     setExplanation(selected.explanation);
     setCurrentVersion(index);
+  
+    // 🔥 Remove all versions after selected index
+   
   };
 
   /* -------------------- LIVE SCOPE -------------------- */
