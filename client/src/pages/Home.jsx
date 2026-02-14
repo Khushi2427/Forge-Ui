@@ -59,19 +59,30 @@ export default function Homepage() {
             Features
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-400 group-hover:w-full transition-all duration-300" />
           </a>
-          <Link
-            to="/workspace"
-            className="relative group px-6 py-2.5 rounded-lg font-medium overflow-hidden"
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:from-indigo-700 group-hover:to-purple-700 transition-all duration-300" />
-            <span className="absolute inset-0 bg-[url('data:image/svg+xml,...')] opacity-0 group-hover:opacity-20 transition-opacity" />
-            <span className="relative flex items-center space-x-2">
-              <span>Launch App</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </span>
-          </Link>
+          <div className="flex space-x-3">
+            <Link
+              to="/workspace"
+              className="relative group px-4 py-2 rounded-lg font-medium overflow-hidden border border-indigo-500/50"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-indigo-600/20 to-purple-600/20 group-hover:from-indigo-600/40 group-hover:to-purple-600/40 transition-all duration-300" />
+              <span className="relative flex items-center space-x-2">
+                <span className="text-sm">Deterministic</span>
+                <span className="group-hover:translate-x-1 transition-transform">→</span>
+              </span>
+            </Link>
+            <Link
+              to="/workspace-dynamic"
+              className="relative group px-4 py-2 rounded-lg font-medium overflow-hidden bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg shadow-indigo-500/25"
+            >
+              <span className="absolute inset-0 bg-[url('data:image/svg+xml,...')] opacity-0 group-hover:opacity-20 transition-opacity" />
+              <span className="relative flex items-center space-x-2">
+                <span className="text-sm">Dynamic</span>
+                <span className="group-hover:translate-x-1 transition-transform">✨</span>
+              </span>
+            </Link>
+          </div>
         </div>
       </nav>
 
@@ -94,7 +105,7 @@ export default function Homepage() {
 
         <div className="relative z-10 max-w-5xl mx-auto">
           <div className="inline-block px-4 py-2 bg-indigo-500/10 backdrop-blur-sm rounded-full border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-8 animate-fade-in-down">
-            🚀 Deterministic AI UI Generation
+            🚀 Deterministic & Dynamic AI UI Generation
           </div>
           
           <h2 className={`text-6xl md:text-7xl font-bold mb-8 leading-tight transition-all duration-700 ${glowingText ? 'scale-105' : ''}`}>
@@ -104,29 +115,39 @@ export default function Homepage() {
             <br />
             <span className="relative">
               <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Deterministic AI
+                AI-Powered Precision
               </span>
               <span className="absolute -bottom-3 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full animate-width" />
             </span>
           </h2>
           
           <p className="text-gray-400 max-w-3xl mx-auto text-xl leading-relaxed mb-12 animate-fade-in-up">
-            Convert natural language into structured, reproducible UI code using a fixed
-            component system. <span className="text-white font-semibold">Safe.</span>{" "}
-            <span className="text-indigo-400 font-semibold">Controlled.</span>{" "}
-            <span className="text-purple-400 font-semibold">Explainable.</span>
+            Choose between <span className="text-indigo-400 font-semibold">deterministic</span> (fixed components) or{" "}
+            <span className="text-purple-400 font-semibold">dynamic</span> (flexible styling) UI generation. 
+            Both are safe, controlled, and explainable.
           </p>
 
-          <Link
-            to="/workspace"
-            className="group relative inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-xl text-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]"
-          >
-            <span>Start Building</span>
-            <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
-            <span className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16">
+            <Link
+              to="/workspace"
+              className="group relative inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-700 hover:to-indigo-600 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] min-w-[220px] justify-center"
+            >
+              <span>Deterministic Mode</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
+              <span className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Link>
 
-          <div className="mt-16 flex justify-center space-x-8 text-sm text-gray-500 animate-fade-in">
+            <Link
+              to="/workspace-dynamic"
+              className="group relative inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-xl text-lg font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] min-w-[220px] justify-center"
+            >
+              <span>Dynamic Mode</span>
+              <span className="group-hover:translate-x-2 transition-transform duration-300">✨</span>
+              <span className="absolute inset-0 rounded-xl bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </Link>
+          </div>
+
+          <div className="flex justify-center space-x-8 text-sm text-gray-500 animate-fade-in">
             <span className="flex items-center space-x-2">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
               <span>Multi-Step AI</span>
@@ -137,6 +158,10 @@ export default function Homepage() {
             </span>
             <span className="flex items-center space-x-2">
               <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse" />
+              <span>Dynamic</span>
+            </span>
+            <span className="flex items-center space-x-2">
+              <span className="w-2 h-2 bg-pink-400 rounded-full animate-pulse" />
               <span>Versioned</span>
             </span>
           </div>
@@ -150,14 +175,90 @@ export default function Homepage() {
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <span className="text-indigo-400 font-semibold text-sm uppercase tracking-wider">
-              Why Choose ForgeUI
+              Two Powerful Modes
             </span>
             <h3 className="text-4xl md:text-5xl font-bold mt-4 mb-6 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-              Built for the Future of UI Development
+              Choose Your Development Style
             </h3>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-              Experience a new paradigm of AI-assisted development with complete control and predictability
+              Whether you need strict component control or creative freedom, ForgeUI has you covered
             </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-20">
+            {/* Deterministic Mode Card */}
+            <div className="group relative opacity-0 animate-fade-in-up">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-indigo-500/30 to-blue-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
+              <div className="relative bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl border border-indigo-500/30 hover:border-transparent transition-all duration-500 transform group-hover:-translate-y-2">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="text-5xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                    🎯
+                  </div>
+                  <span className="px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-sm font-medium">Deterministic</span>
+                </div>
+                <h4 className="text-2xl font-bold mb-4 bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
+                  Fixed Component System
+                </h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-indigo-400 mt-1">✓</span>
+                    <span>Pre-built system components (Button, Card, Modal, etc.)</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-indigo-400 mt-1">✓</span>
+                    <span>No arbitrary styling - consistent design system</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-indigo-400 mt-1">✓</span>
+                    <span>Perfect for enterprise applications</span>
+                  </li>
+                </ul>
+                <Link
+                  to="/workspace"
+                  className="mt-6 inline-flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition-colors group/link"
+                >
+                  <span>Try Deterministic Mode</span>
+                  <span className="group-hover/link:translate-x-1 transition-transform">→</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Dynamic Mode Card */}
+            <div className="group relative opacity-0 animate-fade-in-up animation-delay-200">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/30 to-pink-500/30 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
+              <div className="relative bg-gray-800/90 backdrop-blur-sm p-8 rounded-2xl border border-purple-500/30 hover:border-transparent transition-all duration-500 transform group-hover:-translate-y-2">
+                <div className="flex items-center justify-between mb-6">
+                  <div className="text-5xl transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                    ✨
+                  </div>
+                  <span className="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm font-medium">Dynamic</span>
+                </div>
+                <h4 className="text-2xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Flexible Styling System
+                </h4>
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start space-x-2">
+                    <span className="text-purple-400 mt-1">✓</span>
+                    <span>Generate custom styles with Tailwind CSS</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-purple-400 mt-1">✓</span>
+                    <span>Creative freedom with safety guardrails</span>
+                  </li>
+                  <li className="flex items-start space-x-2">
+                    <span className="text-purple-400 mt-1">✓</span>
+                    <span>Perfect for prototypes and unique designs</span>
+                  </li>
+                </ul>
+                <Link
+                  to="/workspace-dynamic"
+                  className="mt-6 inline-flex items-center space-x-2 text-purple-400 hover:text-purple-300 transition-colors group/link"
+                >
+                  <span>Try Dynamic Mode</span>
+                  <span className="group-hover/link:translate-x-1 transition-transform">✨</span>
+                </Link>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -169,38 +270,38 @@ export default function Homepage() {
               delay={0}
             />
             <FeatureCard
-              icon="🎯"
-              title="Deterministic Components"
-              description="All UIs use a fixed component library. No arbitrary styling. No unpredictable outputs."
-              gradient="from-purple-500/20 to-pink-500/20"
-              delay={100}
-            />
-            <FeatureCard
               icon="🔄"
               title="Iterative Modifications"
               description="Modify existing UI without rewriting everything. Incremental edits with version history."
               gradient="from-green-500/20 to-emerald-500/20"
-              delay={200}
+              delay={100}
             />
             <FeatureCard
               icon="👁️"
               title="Live Preview + Editable Code"
               description="View generated React code, edit it manually, and see instant live rendering."
               gradient="from-orange-500/20 to-red-500/20"
-              delay={300}
+              delay={200}
             />
             <FeatureCard
               icon="⏪"
               title="Rollback & Versioning"
               description="Move between previous UI states safely and transparently with full history tracking."
               gradient="from-indigo-500/20 to-blue-500/20"
-              delay={400}
+              delay={300}
             />
             <FeatureCard
               icon="🛡️"
               title="Safety & Validation"
               description="Component whitelist enforcement, injection protection, and validation before rendering."
               gradient="from-red-500/20 to-pink-500/20"
+              delay={400}
+            />
+            <FeatureCard
+              icon="🎨"
+              title="Dual Mode Support"
+              description="Switch between deterministic and dynamic modes based on your project needs."
+              gradient="from-purple-500/20 to-pink-500/20"
               delay={500}
             />
           </div>
@@ -214,22 +315,31 @@ export default function Homepage() {
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <h3 className="text-4xl md:text-5xl font-bold mb-8">
             Ready to Transform Your
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent block mt-2">
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent block mt-2">
               UI Development Workflow?
             </span>
           </h3>
           
           <p className="text-gray-400 text-xl mb-12">
-            Join developers who are building better UIs with deterministic AI
+            Join developers who are building better UIs with AI-powered precision
           </p>
           
-          <Link
-            to="/workspace"
-            className="group relative inline-flex items-center space-x-3 px-12 py-6 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl text-2xl font-bold transform hover:scale-110 transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
-          >
-            <span>Get Started Now</span>
-            <span className="group-hover:translate-x-2 group-hover:scale-125 transition-all duration-300">→</span>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              to="/workspace"
+              className="group relative inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-indigo-600 to-indigo-500 rounded-2xl text-xl font-bold transform hover:scale-110 transition-all duration-500 hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]"
+            >
+              <span>Deterministic Mode</span>
+              <span className="group-hover:translate-x-2 transition-transform">→</span>
+            </Link>
+            <Link
+              to="/workspace-dynamic"
+              className="group relative inline-flex items-center space-x-3 px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl text-xl font-bold transform hover:scale-110 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.6)]"
+            >
+              <span>Dynamic Mode</span>
+              <span className="group-hover:translate-x-2 transition-transform">✨</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -258,7 +368,6 @@ export default function Homepage() {
             </p>
             
             <div className="flex space-x-6 mt-4 md:mt-0">
-            
               <a href="https://github.com/Khushi2427" className="text-gray-500 hover:text-white transition-colors">
                 <span className="sr-only">GitHub</span>
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">

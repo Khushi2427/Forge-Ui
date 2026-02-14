@@ -3,15 +3,15 @@ import axios from "axios";
 import Editor from "@monaco-editor/react";
 import { LiveProvider, LivePreview, LiveError } from "react-live";
 
-// System Components
-import Button from "../components/system/Button";
-import Card from "../components/system/Card";
-import Input from "../components/system/Input";
-import Modal from "../components/system/Modal";
-import Navbar from "../components/system/Navbar";
-import Sidebar from "../components/system/Sidebar";
-import Table from "../components/system/Table";
-import Chart from "../components/system/Chart";
+// // System Components
+// import Button from "../components/system/Button";
+// import Card from "../components/system/Card";
+// import Input from "../components/system/Input";
+// import Modal from "../components/system/Modal";
+// import Navbar from "../components/system/Navbar";
+// import Sidebar from "../components/system/Sidebar";
+// import Table from "../components/system/Table";
+// import Chart from "../components/system/Chart";
 
 export default function Workspace() {
   const [message, setMessage] = useState("");
@@ -33,7 +33,7 @@ export default function Workspace() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/generate",
+        "http://localhost:5001/api/generate2",
         {
           message,
           previousPlan: isRegenerate ? null : plan || null,
@@ -93,14 +93,7 @@ export default function Workspace() {
   const scope = {
     React,
     useState: React.useState,
-    Button,
-    Card,
-    Input,
-    Modal,
-    Navbar,
-    Sidebar,
-    Table,
-    Chart
+
   };
 
   /* -------------------- SAFE WRAP CODE -------------------- */
@@ -119,7 +112,7 @@ export default function Workspace() {
       
       {/* ================= LEFT PANEL ================= */}
       <div className="w-full lg:w-1/4 border-b lg:border-b-0 lg:border-r border-gray-800 p-4 flex flex-col">
-        <h2 className="text-xl font-semibold mb-4">ForgeUI-Deterministic</h2>
+        <h2 className="text-xl font-semibold mb-4">ForgeUI-Dynamic</h2>
 
         <textarea
           className="bg-gray-800 p-3 rounded-lg resize-none h-32 text-sm focus:outline-none"
@@ -196,14 +189,14 @@ export default function Workspace() {
       </div>
 
       {/* ================= LIVE PREVIEW ================= */}
-      <div className="w-full lg:w-2/5 p-4 lg:p-6 overflow-hidden">
-  <LiveProvider code={wrappedCode} scope={scope}>
-    <div className="bg-white text-black rounded-lg shadow-lg h-[600px] max-h-[80vh] overflow-auto p-4">
-      <LivePreview />
-    </div>
-    <LiveError className="text-red-500 mt-4 text-sm" />
-  </LiveProvider>
-</div>
+      <div className="w-full lg:w-2/5 p-4 lg:p-6 overflow-auto">
+        <LiveProvider code={wrappedCode} scope={scope} noInline>
+          <div className="bg-white text-black p-6 rounded-lg min-h-[300px] shadow-lg">
+            <LivePreview />
+          </div>
+          <LiveError className="text-red-500 mt-4 text-sm" />
+        </LiveProvider>
+      </div>
     </div>
   );
 }

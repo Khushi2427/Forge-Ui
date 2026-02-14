@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import generateRoute from "./routes/generate.js";
+import generator2Route from "./routes/generator2.js";
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 /* -------------------- Routes -------------------- */
 
 app.use("/api/generate", generateRoute);
+app.use("/api/generate2", generator2Route);
 
 /* -------------------- Error Handling -------------------- */
 
