@@ -33,7 +33,7 @@ export default function Workspace() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5001/api/generate2",
+        `${import.meta.env.VITE_API_URL}/api/generate2`,
         {
           message,
           previousPlan: isRegenerate ? null : plan || null,
