@@ -16,7 +16,7 @@ Expected Request Body:
 }
 */
 
-router.post("/", injectionGuard, async (req, res) => {
+router.post("/generate", injectionGuard, async (req, res) => {
   const { message, previousPlan, previousCode } = req.body;
 
   if (!message || typeof message !== "string") {

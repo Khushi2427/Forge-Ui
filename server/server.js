@@ -25,8 +25,8 @@ app.get("/", (req, res) => {
 
 /* -------------------- Routes -------------------- */
 
-app.use("/api/generate", generateRoute);
-app.use("/api/generate2", generator2Route);
+app.use("/api", generateRoute);
+app.use("/api", generator2Route);
 
 /* -------------------- Error Handling -------------------- */
 
