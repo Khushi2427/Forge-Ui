@@ -9,6 +9,7 @@ CRITICAL RULES:
   Button, Card, Input, Modal, Navbar, Sidebar, Table, Chart
 
   Return valid React JSX.
+  Do not return any text just JSX.
   Wrap everything inside a single fragment (<> </>).
   Do not use string event handlers.
   Do not use undefined functions.
