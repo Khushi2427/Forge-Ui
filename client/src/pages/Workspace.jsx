@@ -197,7 +197,7 @@ export default function Workspace() {
 
       {/* ================= LIVE PREVIEW ================= */}
       <div className="w-full lg:w-2/5 p-4 lg:p-6 overflow-hidden">
-  <LiveProvider code={wrappedCode} scope={scope}>
+  <LiveProvider code={wrappedCode} scope={scope} noInline>
     <div className="bg-white text-black rounded-lg shadow-lg h-[600px] max-h-[80vh] overflow-auto p-4">
       <LivePreview />
     </div>
