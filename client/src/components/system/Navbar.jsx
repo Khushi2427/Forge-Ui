@@ -1,12 +1,13 @@
 import React from "react";
 
-const Navbar = ({ children, className = "" }) => {
+const Navbar = ({ children, className = "", ...props }) => {
   return (
-    <nav
-      className={`w-full px-6 py-3 bg-gray-800 text-white flex items-center justify-between ${className}`}
+    <div
+      className={`w-full bg-gray-900 text-white px-6 py-3 flex items-center justify-between ${className}`}
+      {...props}
     >
       {children}
-    </nav>
+    </div>
   );
 };
 

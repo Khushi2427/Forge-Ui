@@ -77,11 +77,15 @@ export default function Workspace() {
   const rollback = (index) => {
     const selected = versions[index];
     if (!selected) return;
-
+  
+    // Restore selected version
     setPlan(selected.plan);
     setCode(selected.code);
     setExplanation(selected.explanation);
     setCurrentVersion(index);
+  
+    // 🔥 Remove all versions after selected index
+    setVersions((prev) => prev.slice(0, index + 1));
   };
 
   /* -------------------- LIVE SCOPE -------------------- */
@@ -141,7 +145,7 @@ export default function Workspace() {
         </button>
 
         {/* -------- Version History -------- */}
-        <div className="mt-6 flex-1 overflow-auto">
+        <div className="mt-6 h-48 overflow-y-auto">
           <h3 className="text-sm text-gray-400 mb-2">Versions</h3>
 
           <div className="space-y-2">
