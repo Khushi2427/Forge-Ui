@@ -115,10 +115,10 @@ export default function Workspace() {
   `;
 
   return (
-    <div className="h-screen flex bg-gray-950 text-white overflow-hidden">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-gray-950 text-white">
       
       {/* ================= LEFT PANEL ================= */}
-      <div className="w-1/4 border-r border-gray-800 p-4 flex flex-col">
+      <div className="w-full lg:w-1/4 border-b lg:border-b-0 lg:border-r border-gray-800 p-4 flex flex-col">
         <h2 className="text-xl font-semibold mb-4">ForgeUI</h2>
 
         <textarea
@@ -180,7 +180,7 @@ export default function Workspace() {
       </div>
 
       {/* ================= CODE EDITOR ================= */}
-      <div className="w-2/5 border-r border-gray-800">
+      <div className="w-full lg:w-2/5 border-b lg:border-b-0 lg:border-r border-gray-800 h-[400px] lg:h-auto">
         <Editor
           height="100%"
           language="javascript"
@@ -196,7 +196,7 @@ export default function Workspace() {
       </div>
 
       {/* ================= LIVE PREVIEW ================= */}
-      <div className="w-2/5 p-6 overflow-auto">
+      <div className="w-full lg:w-2/5 p-4 lg:p-6 overflow-auto">
         <LiveProvider code={wrappedCode} scope={scope} noInline>
           <div className="bg-white text-black p-6 rounded-lg min-h-[300px] shadow-lg">
             <LivePreview />
