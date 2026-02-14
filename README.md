@@ -1,71 +1,174 @@
-# 🚀 ForgeUI
+# 🚀 ForgeUI --- AI-Powered UI Generation System
 
-ForgeUI is an AI-powered UI generation platform that transforms natural
-language prompts into fully functional React interfaces in real time.
+ForgeUI is a full-stack AI-driven UI generation platform that converts
+natural language prompts into structured, functional React interfaces.
 
-It combines AI generation, live code editing, deterministic system
-components, and version control into a single interactive development
-workspace.
+At its core, ForgeUI follows a **multi-agent architecture** consisting
+of:
 
-------------------------------------------------------------------------
+-   🧠 Planner Agent
+-   ⚙️ Generator Agent
+-   📖 Explainer Agent
 
-# ✨ Features
-
-## 🔥 AI-Powered UI Generation
-
-Describe your UI in plain English:
-
-> "Create a dashboard with sidebar and analytics cards"
-
-ForgeUI will: - Generate a layout plan - Produce React JSX code -
-Provide an explanation - Render it instantly in live preview
+This architecture ensures structured reasoning, clean UI generation, and
+transparent output explanation.
 
 ------------------------------------------------------------------------
 
-## 🧠 Dual Mode Architecture
+# 🧠 Core Concept: Multi-Agent Architecture
 
-### 1️⃣ Dynamic Mode
+Instead of directly generating UI code from a prompt, ForgeUI separates
+responsibilities into three logical stages:
+
+User Prompt\
+⬇\
+Planner → Generator → Explainer\
+⬇\
+Live UI Render + Version Control
+
+This separation improves: - Reliability - Structure - Maintainability -
+Output quality - Debuggability
+
+------------------------------------------------------------------------
+
+# 🧠 1️⃣ Planner Agent
+
+## Purpose
+
+The Planner converts a user's natural language prompt into a structured
+UI blueprint.
+
+It does NOT generate code.
+
+It focuses on: - Layout structure - Component hierarchy - UI sections -
+State requirements - Interaction logic (high-level)
+
+------------------------------------------------------------------------
+
+## Example
+
+User Prompt: \> "Create a dashboard with sidebar and analytics cards"
+
+Planner Output: - Main layout container - Sidebar (navigation links) -
+Top navbar - Grid layout for analytics cards - Card components with
+title + metric - Responsive behavior
+
+------------------------------------------------------------------------
+
+## Why Planner Is Important
+
+Without planning: - AI may generate inconsistent layouts - Structure may
+break - UI becomes unpredictable
+
+Planner ensures: - Logical UI structure - Clear component boundaries -
+Scalable generation
+
+------------------------------------------------------------------------
+
+# ⚙️ 2️⃣ Generator Agent
+
+## Purpose
+
+The Generator converts the structured plan into actual React JSX code.
+
+It receives: - User prompt - Planner output - Optional previous version
+(for modification)
+
+It produces: - Functional React JSX - Clean component structure - Valid
+syntax - Styled output (Tailwind)
+
+------------------------------------------------------------------------
+
+## Responsibilities
+
+-   Transform layout plan into JSX
+-   Apply Tailwind classes
+-   Add state logic (useState when required)
+-   Use deterministic system components (if in deterministic mode)
+-   Ensure compatibility with LivePreview sandbox
+
+------------------------------------------------------------------------
+
+## Dynamic vs Deterministic
+
+### Dynamic Mode
 
 -   Fully AI-generated JSX
--   Live rendering using react-live
--   Flexible layout generation
+-   Flexible layouts
+-   Creative freedom
 
-### 2️⃣ Deterministic Mode
+### Deterministic Mode
 
--   Uses predefined system components
--   Controlled UI structure
--   Reusable architecture
-
-------------------------------------------------------------------------
-
-## 📝 Live Code Editing
-
--   Monaco Editor integration
--   Real-time code updates
--   Editable AI-generated output
+-   Restricted to system components
+-   Controlled architecture
+-   Predictable UI output
 
 ------------------------------------------------------------------------
 
-## 👀 Live Preview Sandbox
+# 📖 3️⃣ Explainer Agent
 
--   Secure JSX wrapping
--   Error display in real time
--   Scroll-safe container
--   Prevents layout overflow
+## Purpose
 
-------------------------------------------------------------------------
+The Explainer describes what the generated UI code does.
 
-## 🕘 Version History + Rollback
-
-Every generation creates a version snapshot: - Plan - Code -
-Explanation - Timestamp
-
-You can: - Restore any previous version - Remove future versions -
-Maintain iterative design history
+It provides: - Structural explanation - State explanation - Component
+breakdown - Styling summary
 
 ------------------------------------------------------------------------
 
-# 🏗️ Tech Stack
+## Why Explainer Matters
+
+-   Improves transparency
+-   Helps debugging
+-   Aids learning
+-   Makes system production-ready
+
+Instead of black-box generation, users understand: - Why the UI looks
+the way it does - How it is structured - What each section does
+
+------------------------------------------------------------------------
+
+# 🔄 Complete Flow
+
+1️⃣ User enters a prompt\
+2️⃣ Planner creates structured UI blueprint\
+3️⃣ Generator converts blueprint into React code\
+4️⃣ Explainer describes the generated code\
+5️⃣ Frontend renders UI in live preview\
+6️⃣ Version snapshot saved
+
+------------------------------------------------------------------------
+
+# 🕘 Version Control System
+
+Each generation creates a version snapshot:
+
+-   Plan
+-   Code
+-   Explanation
+-   Timestamp
+
+Users can: - Rollback to any previous version - Remove future branches -
+Iterate safely
+
+This mimics lightweight Git-style state control inside the UI builder.
+
+------------------------------------------------------------------------
+
+# 🖥️ Live Preview Engine
+
+ForgeUI uses a sandboxed rendering system:
+
+-   Monaco Editor for code editing
+-   react-live for runtime rendering
+-   Error boundary for safe execution
+-   Overflow containment to prevent layout escape
+
+This allows real-time UI execution without refreshing the app.
+
+------------------------------------------------------------------------
+
+# 🏗️ Technical Architecture
 
 ## Frontend
 
@@ -79,22 +182,36 @@ Maintain iterative design history
 
 -   Node.js
 -   Express
--   OpenRouter API - Llama Instruct
--   CORS Configuration
--   Environment-based setup
+-   Modular agent routes
+-   OpenRouter integration
+-   CORS security via environment variables
 
 ------------------------------------------------------------------------
 
-# 📂 Project Structure
+# 📂 Folder Structure
 
-forge-ui/ │ ├── client/ │ ├── src/ │ ├── .env │ ├── server/ │ ├──
-routes/ │ ├── server.js │ └── .env │ └── README.md
+forge-ui/
+│
+├── client/ (Vite Frontend)
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── components/system/
+│   │   └── Workspace.jsx
+│   └── .env
+│
+├── server/ (Express Backend)
+│   ├── routes/
+│   ├── agents/
+│   ├── server.js
+│   └── .env
+│
+└── README.md
 
 ------------------------------------------------------------------------
 
 # ⚙️ Environment Setup
 
-## Backend `.env`
+## Backend (.env)
 
 PORT=5001\
 OPENAI_API_KEY=your_openai_api_key\
@@ -102,81 +219,53 @@ FRONTEND_URL=http://localhost:5173
 
 ------------------------------------------------------------------------
 
-## Frontend `.env` (Vite)
+## Frontend (.env)
 
 VITE_API_URL=http://localhost:5001
 
 ------------------------------------------------------------------------
 
-# 🚀 Running Locally
+# 🚀 Deployment
 
-## Install Dependencies
+Backend → Render\
+Frontend → Vercel
 
-Backend: cd server\
-npm install
-
-Frontend: cd client\
-npm install
+Use environment-based API URLs for production.
 
 ------------------------------------------------------------------------
 
-## Start Backend
+# 💡 Why This Architecture Is Powerful
 
-npm start
+Most AI UI generators directly generate code.
 
-## Start Frontend
+ForgeUI is different because it:
 
-npm run dev
+-   Separates reasoning from generation
+-   Structures output through planning
+-   Explains results transparently
+-   Maintains version history
+-   Supports deterministic control
 
-Open: http://localhost:5173
-
-------------------------------------------------------------------------
-
-# 🌍 Deployment
-
-## Backend → Render
-
--   Root Directory: server
--   Build Command: npm install
--   Start Command: npm start
-
-## Frontend → Vercel
-
--   Add Environment Variable:
-    VITE_API_URL=https://your-backend-url.onrender.com
+This makes it closer to an AI-assisted frontend engineering platform
+rather than a simple code generator.
 
 ------------------------------------------------------------------------
 
-# 🔄 How It Works
+# 🔮 Future Enhancements
 
-1.  User enters prompt\
-2.  Frontend sends request to backend\
-3.  Backend generates plan + JSX\
-4.  Frontend renders preview\
-5.  Version snapshot saved
-
-------------------------------------------------------------------------
-
-# 🔐 Security
-
--   CORS restricted via .env
--   No hardcoded API keys
--   Production-safe configuration
-
-------------------------------------------------------------------------
-
-# 💡 Future Improvements
-
--   Diff viewer
+-   Diff view between versions
 -   AI refactor mode
--   Drag-and-drop builder
+-   Multi-device preview
 -   Theme engine
--   Mobile preview
+-   Drag-and-drop hybrid mode
+-   Component-level intelligence
 
 ------------------------------------------------------------------------
 
-# 👨‍💻 About
+# 👨‍💻 Final Thought
 
-ForgeUI is a real-time AI-powered frontend engineering workspace
-demonstrating full-stack integration, runtime JSX rendering, and
-production deployment architecture.
+ForgeUI demonstrates how multi-agent AI systems can improve reliability
+and structure in generative applications.
+
+It is not just UI generation ---\
+it is AI-assisted frontend architecture.
